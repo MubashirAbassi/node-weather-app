@@ -1,0 +1,64 @@
+body{
+    background-color: rgb(220, 238, 238) !important;
+    color: #333333;
+    font-family: sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 97vh;
+}
+
+.main-content{
+    flex-grow: 1;
+}
+
+.header-title{
+    font-size: 60px;
+}
+
+header{
+    border-top: 1px solid red;
+    border-bottom: 1px solid blue;
+}
+
+.weather-form input{
+    padding: 8px 15px;
+    font-size: 20px;
+    width: 450px;
+    color: rgb(48, 44, 44);
+    background-color: rgb(204, 221, 221);
+    border: 1px solid rgb(83, 83, 83);
+    border-radius: 15px;
+    margin-left: -20px;
+    cursor: text;
+}
+
+.weather-form input::placeholder{
+    color: rgb(48, 44, 44);
+}
+
+.weather-form button{
+    padding: 8px 50px;
+    font-size: 20px;
+    background-color: rgb(75, 72, 72);
+    color: white;
+    border: 1px solid rgb(83, 83, 83);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.weather-form button:hover{
+    background-color: rgb(204, 221, 221);
+    color: black;
+}
+
+footer{
+    border-top: 1px solid red;
+    border-bottom: 1px solid blue;
+    margin-top: 20px;
+}
+
+.error-msg{
+    margin-left: 20px;
+    color: red;
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="./images/weather.png">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div class="main-content">
+        {{>header}}
+      <br>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1>{{title}}</h1>
+            <h4>{{desc}}</h4>
+            <br>
+            <form action="" class="weather-form">
+              <input id="search-loc" type="text" placeholder="Location">
+              <button type="submit">Search</button>
+              <br><br>
+              <div id="result-div">
+                <h3 id="first-para"></h3>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    {{>footer}}
+
+
+
+    <script src="./client-js/Capp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
