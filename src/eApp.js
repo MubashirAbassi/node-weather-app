@@ -6,8 +6,6 @@ const getForecast = require('./utils/forecast')
 
 
 
-console.log('Node JS file running')
-
 const app = express()
 // paths for express config
 const publicDir = path.join(__dirname , '../public') //setting path to html file directory
