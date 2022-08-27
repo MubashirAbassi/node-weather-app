@@ -11,10 +11,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.0",
     "chalk": "^5.0.1",
     "express": "^4.16.4",
     "hbs": "^4.0.1",
-    "request": "^2.88.2"
+    "knex": "^2.1.0",
+    "netsh": "^1.0.1",
+    "node-wifi": "^2.0.16",
+    "pg": "^8.7.3",
+    "qrcode": "^1.5.1",
+    "request": "^2.88.2",
+    "wifi-control": "^2.0.1",
+    "wifi-qr-code-generator": "^1.1.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"

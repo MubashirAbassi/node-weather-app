@@ -3,12 +3,20 @@ const express = require('express')
 const hbs = require('hbs')
 const geoCode = require('./utils/geocode')
 const getForecast = require('./utils/forecast')
+let bodyparser = require('body-parser')
+var WiFiControl = require('wifi-control');
+const QRCode = require('qrcode')
+
+
 
 
 
 const app = express()
 let port = process.env.PORT || 3000                  //first for heroku or use port 3000
 
+
+app.use(bodyparser.json())
+app.use(bodyparser.urlencoded({extended : true}))
 
 // paths for express config
 const publicDir = path.join(__dirname , '../public') //setting path to html file directory
@@ -26,12 +34,56 @@ hbs.registerPartials(partials_location)
 app.use(express.static(publicDir))
 
 
+
 app.get('', (req, res) => {
     res.render('index', {
         name : 'Mubusher Munsif',
         title : 'Weather App',
         desc : 'USE This App to Get your WEATHER!'
     })
+})
+
+app.post('/qrcode', async(req, res)=>{
+
+    let{ name , email , phoneNumber } = req.body
+
+    console.log('name :' + name)
+    console.log('email :' + email)
+    console.log('phoneNumber :' + phoneNumber)
+
+    
+    WiFiControl.init({
+        debug: true
+    });
+
+    WiFiControl.scanForWiFi( function(err, response) {
+        if (err) console.log(err);
+    });
+
+    var settings = {
+        debug: true || false,
+        iface: 'wlan',
+    };
+    
+    WiFiControl.init( settings );
+
+    WiFiControl.configure( settings );
+
+    await WiFiControl.scanForWiFi( function(err, response) {
+        if (err) console.log(err);
+    });
+
+    var _ap = {
+        ssid: "MubusherdY`OdY`O",
+        password: "snooker123"
+      };
+      var results = await WiFiControl.connectToAP( _ap, function(err, response) {
+        if (err) console.log(err);
+        console.log(response);
+        res.render('about',{
+            message : 'User connected Successfully'
+        })
+      });
 })
 
 app.get('/about', (req, res) => {
@@ -45,7 +97,20 @@ app.get('/help', (req, res) => {
     res.render('help', {
         title : 'HBS data rendering in HELP page',
         name : 'Mubusher Munsif',
-        description : 'This is the full description of this page'
+        description : 'This is the full description of this page',
+        country : 'Pakistan',
+        age : 24
+    })
+})
+
+app.get('/qr', async (req, res) => {
+    try{
+        console.log(await QRCode.toDataURL("https://localhost:3000/about"))
+    }catch{
+        console.log(err)
+    }
+    res.render('qr',{
+        msg : "qr page randered"
     })
 })
 
@@ -90,6 +155,15 @@ app.get('*', (req, res) => {
         errorMsg : 'Page Not Found!'
     })
 })
+
+
+
+
+
+
+
+
+
 
 
 
